@@ -1,9 +1,18 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Ui_Fifth_page(object):
+
+    def Try_Again(self):
+        from third import Ui_Third_page
+
+        self.window2pac = QtWidgets.QMainWindow()
+        self.again = Ui_Third_page()
+        self.again.setupUi(self.window2pac)
+        self.window2pac.show()
+
     def setupUi(self, Fifth_page):
         Fifth_page.setObjectName("Fifth_page")
-        Fifth_page.resize(381, 565)
+        Fifth_page.resize(381, 600)
         Fifth_page.setStyleSheet("background-color: rgb(238, 238, 238);")
         
         self.centralwidget = QtWidgets.QWidget(Fifth_page)
@@ -21,11 +30,18 @@ class Ui_Fifth_page(object):
         self.result_label.setObjectName("result_label")
         
         self.close_button = QtWidgets.QPushButton(self.centralwidget)
-        self.close_button.setGeometry(QtCore.QRect(80, 450, 221, 80))
+        self.close_button.setGeometry(QtCore.QRect(80, 530, 221, 50))
         font = QtGui.QFont()
         font.setPointSize(14)
         self.close_button.setFont(font)
         self.close_button.setObjectName("close_button")
+
+        self.try_button = QtWidgets.QPushButton(self.centralwidget)
+        self.try_button.setGeometry(QtCore.QRect(80, 450, 221, 50))
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        self.try_button.setFont(font)
+        self.try_button.setObjectName("try_button")
         
         self.try_picture_label = QtWidgets.QLabel(self.centralwidget)
         self.try_picture_label.setGeometry(QtCore.QRect(10, 120, 361, 301))
@@ -47,6 +63,8 @@ class Ui_Fifth_page(object):
 # ---------------------------------------------- LOGIC ----------------------------------------- #
         # call functions from here:
         self.close_button.clicked.connect(Fifth_page.close)
+        self.try_button.clicked.connect(self.Try_Again)
+        self.try_button.clicked.connect(Fifth_page.close)
 
 # ----------------------------------------------- END ------------------------------------------- #
 
@@ -55,6 +73,7 @@ class Ui_Fifth_page(object):
         Fifth_page.setWindowTitle(_translate("Fifth_page", "MainWindow"))
         self.result_label.setText(_translate("Fifth_page", "Computer Won The Game! All Chocolates Stay Here!"))
         self.close_button.setText(_translate("Fifth_page", "Close"))
+        self.try_button.setText(_translate("Fifth_page", "Try Again"))
 
 
 if __name__ == "__main__":
